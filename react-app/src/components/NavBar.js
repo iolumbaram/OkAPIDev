@@ -5,16 +5,16 @@ const NavBar = (props) => (
   <nav className="column is-2 menu">
     <p className="menu-label">Menu</p>
     <ul className="menu-list">
-      <NavLink to="/products" activeClassName="active-link">
+      <NavLink to="/" activeClassName="active-link">
         Home
       </NavLink>
-      <NavLink to="/about" activeClassName="active-link">
+      <NavLink to="/services" activeClassName="active-link">
         Services
       </NavLink>
-      <NavLink to="/about" activeClassName="active-link">
+      <NavLink to="/loancal" activeClassName="active-link">
         Loan Calculator
       </NavLink>
-      <NavLink to="/about" activeClassName="active-link">
+      <NavLink to="/contactus" activeClassName="active-link">
         Contact us
       </NavLink>
     </ul>

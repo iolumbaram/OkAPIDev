@@ -1,25 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+// import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { ListHeader } from '../components';
-import ProductList from './ProductList';
-import useProducts from './useProducts';
+// import ProductList from './ProductList';
+// import useProducts from './useProducts';
 
 function Products() {
-  const { getProducts, products } = useProducts();
+  // const { getProducts, products } = useProducts();
 
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  // useEffect(() => {
+  //   getProducts();
+  // }, [getProducts]);
 
   function handleRefresh() {
-    getProducts();
+    // getProducts();
   }
 
   return (
     <div className="content-container">
       <ListHeader
-        title="Products"
+        title="Home"
         handleRefresh={handleRefresh}
         routePath="/products"
       />
@@ -29,7 +30,7 @@ function Products() {
             <Route
               exact
               path="/products"
-              component={() => <ProductList products={products} />}
+              // component={() => <ProductList products={products} />}
             />
           </Switch>
         </div>
