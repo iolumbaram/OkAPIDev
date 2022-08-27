@@ -31,6 +31,8 @@ class About extends React.Component {
     this.handleClearAll = this.handleClearAll.bind(this);
   }
 
+
+
   handleChange(event) {
     this.setState(prevState => ({
       values: {
@@ -51,13 +53,11 @@ class About extends React.Component {
   }
 
   handleCalculate(event) {
-    console.log('cal')
     event.preventDefault();
   }
 
 
   handleClearAll(event) {
-    console.log('clear')
     event.preventDefault();
   }
 
