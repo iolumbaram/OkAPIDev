@@ -8,6 +8,7 @@ import About from './About';
 import ContactUs from './ContactUs';
 import ServicePage from './ServicesPage';
 import LoanCalPage from './LoanCalPage';
+import LoanCalResultPage from './LoanCalResultPage';
 
 const Products = withRouter(
   lazy(() => import(/* webpackChunkName: "products" */ './products/Products'))
@@ -29,6 +30,7 @@ class App extends Component {
                 <Route path="/contactus" component={ContactUs} />
                 <Route path="/services" component={ServicePage} />
                 <Route path="/loancal" component={LoanCalPage} />
+                <Route path="/results" component={LoanCalResultPage} />
                 <Route exact path="**" component={NotFound} />
               </Switch>
             </Suspense>

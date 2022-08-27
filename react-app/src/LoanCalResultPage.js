@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import './index.css';
 import Button from 'react-bootstrap/Button';
 
+
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,6 @@ class About extends React.Component {
     this.handleClearAll = this.handleClearAll.bind(this);
   }
 
-
   handleChange(event) {
     this.setState(prevState => ({
       values: {
@@ -51,7 +51,6 @@ class About extends React.Component {
   }
 
   handleCalculate(event) {
-    window.location.href='/results'
     event.preventDefault();
   }
 
@@ -74,14 +73,14 @@ class About extends React.Component {
         <form onSubmit={this.handleCalculate}>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower/Homeowner Income (RM):
+              Estimated Monasdasdasthly TNB Bill Savings (RM):
               <br />
               <input type="text" onChange={this.handleChange} name="income" value={this.state.values.income} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower/Homeowner Age:
+            Estimated Monthly Instalment (RM):
               <br />
               <select name="age" value={this.state.values.age} onChange={this.handleDropDown}>
                 <option value="20"> {'<20'} </option>
@@ -99,7 +98,7 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower Marital Status:
+              Estimated Monthly Cash Flow Savings (RM):
               <br />
               <select name="martial_status" value={this.state.values.martial_status} onChange={this.handleDropDown}>
                 <option value="single">Single</option>
@@ -111,7 +110,7 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower CTOS Score(if known):
+              Customer Name:
               <input type="text" onChange={this.handleChange} name="ctos" value={this.state.values.ctos} />
             </label>
           </Row>
