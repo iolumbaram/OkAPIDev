@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './index.css';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
 class About extends React.Component {
   constructor(props) {
@@ -51,7 +52,6 @@ class About extends React.Component {
   }
 
   handleCalculate(event) {
-    window.location.href='/results'
     event.preventDefault();
   }
 
@@ -150,7 +150,18 @@ class About extends React.Component {
           <br />
 
           <Row xs={2} md={4} lg={5}>
-            <Button variant="info" size="sm" onClick={this.handleCalculate}>Calculate</Button>{' '}
+            <Button variant="info" size="sm" onClick={this.handleCalculate}>
+              <NavLink
+                to={{
+                  pathname: '/results',
+                  info: {
+                    data: this.state.values
+                  }
+                }}
+                exact
+              >Calculate
+              </NavLink>
+            </Button>{' '}
             <Button variant="danger" size="sm" onClick={this.handleClearAll}>Clear All</Button>{' '}
 
 

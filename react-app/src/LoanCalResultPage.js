@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 class About extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {value: ''};
+    console.log(props.location.info);
 
     this.state = {
       values: {
