@@ -5,7 +5,7 @@ const About = () => (
     <div className="content-title-group not-found">
       <h2 className="title">Loan Calculator</h2>
       <p>
-        Coming soon!
+        Coming soon!!
       </p>
       <br />
     </div>
