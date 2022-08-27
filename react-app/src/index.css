@@ -12,3 +12,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .wrapper {
+    padding: 5px 20px;
+}
+
+.wrapper fieldset {
+    margin: 20px 0;
+} */
+
+
+.labels {
+  color: #8d8d8d;
+  position: absolute;
+  top: 27px;
+  left: 55px;
+  background: #ffffff;
+  transition: 300ms;
+  transform: translate(-50%, -50%);
+}
+
+.calculateButtonStyle{
+  background-color: green;
+  padding: 8px;
+  font-family: Arial;
+  text-align: center;
+}
+
+.clearAllButtonStyle{
+  background-color: red;
+  padding: 8px;
+  font-family: Arial;
+  text-align: center;
+}
