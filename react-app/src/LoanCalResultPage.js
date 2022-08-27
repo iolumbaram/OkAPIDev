@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button';
 class About extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.location.info);
 
     this.state = {
       values: {
@@ -29,6 +28,10 @@ class About extends React.Component {
     this.handleDropDown = this.handleDropDown.bind(this);
     this.handleCalculate = this.handleCalculate.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
+  }
+
+  calculate(){
+
   }
 
   handleChange(event) {
