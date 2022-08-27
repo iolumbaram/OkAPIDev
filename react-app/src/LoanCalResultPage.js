@@ -73,39 +73,23 @@ class About extends React.Component {
         <form onSubmit={this.handleCalculate}>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Estimated Monasdasdasthly TNB Bill Savings (RM):
+              Estimated Monthly TNB Bill Savings (RM):
               <br />
               <input type="text" onChange={this.handleChange} name="income" value={this.state.values.income} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-            Estimated Monthly Instalment (RM):
+              Estimated Monthly Instalment (RM):
               <br />
-              <select name="age" value={this.state.values.age} onChange={this.handleDropDown}>
-                <option value="20"> {'<20'} </option>
-                <option value="30">21-30</option>
-                <option value="40">31-40</option>
-                <option value="50">41-50</option>
-                <option value="60">51-60</option>
-                <option value="70">61-70</option>
-                <option value="80">71-80</option>
-                <option value="90">81-90</option>
-                <option value="100">91-100</option>
-              </select>
-              {/* <input type="text" onChange={this.handleChange} name="age" value={this.state.values.age} /> */}
+              <input type="text" onChange={this.handleChange} name="age" value={this.state.values.age} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
               Estimated Monthly Cash Flow Savings (RM):
               <br />
-              <select name="martial_status" value={this.state.values.martial_status} onChange={this.handleDropDown}>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
-              </select>
-              {/* <input type="text" onChange={this.handleChange} name="martial_status" value={this.state.values.martial_status} /> */}
+              <input type="text" onChange={this.handleChange} name="martial_status" value={this.state.values.martial_status} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
@@ -116,42 +100,22 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              System Size (kwp):
+              Contact Number:
               <br />
-              <select name="size" value={this.state.values.size} onChange={this.handleDropDown}>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
               {/* <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} /> */}
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              System Cost (RM): { }
+              Address:
               <br />
-              <select name="cost" value={this.state.values.cost} onChange={this.handleDropDown}>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-              {/* <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} /> */}
+              <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} />
             </label>
           </Row>
-          <Row xs={2} md={4} lg={10}>
-            <label>
-              Downpayment (RM):
-              <br />
-              <input type="text" onChange={this.handleChange} name="downpayment" value={this.state.values.downpayment} />
-            </label>
-          </Row>
-
           <br />
 
           <Row xs={2} md={4} lg={5}>
-            <Button variant="info" size="sm" onClick={this.handleCalculate}>Calculate</Button>{' '}
-            <Button variant="danger" size="sm" onClick={this.handleClearAll}>Clear All</Button>{' '}
-
+            <Button variant="success" size="sm" onClick={this.handleCalculate}>Send To Okapi</Button>{' '}
 
             {/* <Col>
               <input className="calculateButtonStyle" type="calculate" defaultValue="Calculate" />
