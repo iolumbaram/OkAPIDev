@@ -95,6 +95,7 @@ class About extends React.Component {
           <Row xs={2} md={4} lg={10}>
             <label>
               Customer Name:
+              <br />
               <input type="text" onChange={this.handleChange} name="ctos" value={this.state.values.ctos} />
             </label>
           </Row>
@@ -102,7 +103,7 @@ class About extends React.Component {
             <label>
               Contact Number:
               <br />
-              {/* <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} /> */}
+              <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
@@ -116,15 +117,6 @@ class About extends React.Component {
 
           <Row xs={2} md={4} lg={5}>
             <Button variant="success" size="sm" onClick={this.handleCalculate}>Send To Okapi</Button>{' '}
-
-            {/* <Col>
-              <input className="calculateButtonStyle" type="calculate" defaultValue="Calculate" />
-
-            </Col>
-            <Col>
-              <input className="clearAllButtonStyle" type="clear" defaultValue="Clear All" />
-
-            </Col> */}
           </Row>
         </form>
       </Row>
