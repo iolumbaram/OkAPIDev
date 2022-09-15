@@ -25,7 +25,6 @@ class About extends React.Component {
       }
     };
 
-
     this.handleChange = this.handleChange.bind(this);
     this.handleDropDown = this.handleDropDown.bind(this);
     this.handleCalculate = this.handleCalculate.bind(this);
@@ -56,11 +55,18 @@ class About extends React.Component {
     event.preventDefault();
 
     const userObject = {
-      name: '"this.state.name"',
-      email: '"this.state.email"'
+      income: this.state.values.income,
+      age: this.state.values.age,
+      martial_status: this.state.values.martial_status,
+      ctos: this.state.values.ctos,
+      size: this.state.values.size,
+      cost: this.state.values.cost,
+      downpayment: this.state.values.downpayment,
   };
+
+  console.log(userObject)
   
-    axios.post('http://localhost:4000/userform/create', userObject)
+    axios.post('http://localhost:4000/userform/submit', userObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
