@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import './index.css';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 class About extends React.Component {
   constructor(props) {
@@ -53,6 +54,18 @@ class About extends React.Component {
 
   handleCalculate(event) {
     event.preventDefault();
+
+    const userObject = {
+      name: '"this.state.name"',
+      email: '"this.state.email"'
+  };
+  
+    axios.post('http://localhost:4000/userform/create', userObject)
+            .then((res) => {
+                console.log(res.data)
+            }).catch((error) => {
+                console.log(error)
+            });
   }
 
 
