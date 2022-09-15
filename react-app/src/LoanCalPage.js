@@ -64,8 +64,6 @@ class About extends React.Component {
       downpayment: this.state.values.downpayment,
   };
 
-  console.log(userObject)
-  
     axios.post('http://localhost:4000/userform/submit', userObject)
             .then((res) => {
                 console.log(res.data)
