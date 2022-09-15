@@ -66,9 +66,9 @@ class About extends React.Component {
 
     axios.post('http://localhost:4000/userform/submit', userObject)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
             }).catch((error) => {
-                console.log(error)
+                // console.log(error)
             });
   }
 
