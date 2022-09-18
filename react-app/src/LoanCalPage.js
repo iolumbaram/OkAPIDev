@@ -8,20 +8,25 @@ import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class About extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {value: ''};
 
     this.state = {
       values: {
         income: '',
-        age: '',
-        martial_status: '',
+        age: '<20',
+        martial_status: 'Single',
         ctos: '',
-        size: '',
-        cost: '',
-        downpayment: ''
+        size: 0,
+        cost: 0,
+        downpayment: 0
+      },
+      ui: {
+        isInputFieldsValid: false
       }
     };
 
@@ -29,8 +34,44 @@ class About extends React.Component {
     this.handleDropDown = this.handleDropDown.bind(this);
     this.handleCalculate = this.handleCalculate.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
+    this.handleValidate = this.handleValidate.bind(this);
   }
 
+  handleValidate(event) {
+    event.preventDefault();
+
+    let isInputFieldsValid = this.state.ui.isInputFieldsValid;
+
+    const userObject = {
+      income: this.state.values.income,
+      age: this.state.values.age,
+      martial_status: this.state.values.martial_status,
+      ctos: this.state.values.ctos,
+      size: this.state.values.size,
+      cost: this.state.values.cost,
+      downpayment: this.state.values.downpayment,
+    };
+
+    isInputFieldsValid = Object.values(userObject).every(value => {
+      if (value === null) {
+        return false;
+      } else if (value === '') {
+        return false;
+      }
+
+      return true;
+    });
+
+    this.setState({
+      ui: {
+        isInputFieldsValid: isInputFieldsValid,
+      }
+    });
+
+    if (!isInputFieldsValid) {
+      toast('Please fill up the form');
+    }
+  }
 
   handleChange(event) {
     this.setState(prevState => ({
@@ -51,6 +92,7 @@ class About extends React.Component {
     }));
   }
 
+
   handleCalculate(event) {
     event.preventDefault();
 
@@ -62,7 +104,7 @@ class About extends React.Component {
       size: this.state.values.size,
       cost: this.state.values.cost,
       downpayment: this.state.values.downpayment,
-  };
+    };
 
     axios.post('http://localhost:4000/userform/submit', userObject);
   }
@@ -72,10 +114,9 @@ class About extends React.Component {
     event.preventDefault();
   }
 
-
   render() {
+    const isInputFieldsValid = this.state.ui.isInputFieldsValid;
     return <Container>
-
       <Row>
         <Col>
           <h2 className="title">OKAPI</h2>
@@ -83,6 +124,7 @@ class About extends React.Component {
       </Row>
 
       <Row>
+        <ToastContainer />
         <form>
           <Row xs={2} md={4} lg={10}>
             <label>
@@ -162,29 +204,23 @@ class About extends React.Component {
           <br />
 
           <Row xs={2} md={4} lg={5}>
-            <Button variant="info" size="sm" onClick={this.handleCalculate}>
-              <NavLink
-                to={{
-                  pathname: '/results',
-                  info: {
-                    data: this.state.values
-                  }
-                }}
-                exact
-              >Calculate
-              </NavLink>
-            </Button>{' '}
-            <Button variant="danger" size="sm" onClick={this.handleClearAll}>Clear All</Button>{' '}
 
+            {isInputFieldsValid ?
+              <Button variant="info" size="sm" onClick={this.handleCalculate}>
+                <NavLink style={{ color: 'black', textDecoration: 'none' }}
+                  to={{
+                    pathname: '/results',
+                    info: {
+                      data: this.state.values
+                    }
+                  }}
+                  exact
+                >Calculate</NavLink>
+              </Button> : <Button variant="warning" size="sm" onClick={this.handleValidate}>Validate</Button>
+            }
 
-            {/* <Col>
-              <input className="calculateButtonStyle" type="calculate" defaultValue="Calculate" />
+            <Button variant="danger" size="sm" onClick={this.handleClearAll}>Clear All</Button>
 
-            </Col>
-            <Col>
-              <input className="clearAllButtonStyle" type="clear" defaultValue="Clear All" />
-
-            </Col> */}
           </Row>
         </form>
       </Row>
