@@ -5,14 +5,18 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './index.css';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+var pmt = require('formula-pmt');
+
 
 const EIR_APR = 8 / 100; //percentage
 const INSTALMENT_TENOR_YEARS = 10; //number
 
 const kwP_TO_MONTHLY_kwH_RATIO = 111.630036630037; //number
 
-const SST = 6 / 100; //percentage
-const KWTBB = 1.60 / 100; //percentage
+const SST = 6 ; //percentage
+const KWTBB = 1.60 ; //percentage
 
 class About extends React.Component {
   constructor(props) {
@@ -37,7 +41,7 @@ class About extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleDropDown = this.handleDropDown.bind(this);
-    this.handleCalculate = this.handleCalculate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
     this.getResidentialTariffTier = this.getResidentialTariffTier.bind(this);
     this.calculate = this.calculate.bind(this);
@@ -90,8 +94,12 @@ class About extends React.Component {
     //calculate field B : Monthly Instalment (RM) ROUND(-PMT(C10/12,K4*12,J4),0) 
     //Payment = pv* apr/12*(1+apr/12)^(nper*12)/((1+apr/12)^(nper*12)-1)
     let financed_amount_pv = userSystemInputData['totalCost'] - userSystemInputData['upfrontPayment']; 
+    console.log('financed_amount_pv: ' + financed_amount_pv);
+    console.log(Math.pow(2, 3));
+
+    let monthly_instalment_rm = Math.ceil(-1 * pmt( EIR_APR / 12, INSTALMENT_TENOR_YEARS * 12, financed_amount_pv));
     
-    let monthly_instalment_rm = financed_amount_pv * EIR_APR / 12 * ( 1 + EIR_APR / 12 ) ^ (INSTALMENT_TENOR_YEARS * 12)/((1 + EIR_APR / 12) ^ (INSTALMENT_TENOR_YEARS * 12) - 1);
+    //let monthly_instalment_rm = Math.pow(financed_amount_pv * EIR_APR / 12 * ( 1 + EIR_APR / 12 ), (INSTALMENT_TENOR_YEARS * 12)/( Math.pow((1 + EIR_APR / 12) ^ (INSTALMENT_TENOR_YEARS * 12)) - 1));
 
     //calculate field A 
     let monthly_kwh = userSystemInputData['systemSize'] * kwP_TO_MONTHLY_kwH_RATIO;
@@ -129,8 +137,20 @@ class About extends React.Component {
     }));
   }
 
-  handleCalculate(event) {
+  handleSubmit(event) {
     event.preventDefault();
+    
+    const userObject = {
+      income: this.state.values.income,
+      age: this.state.values.age,
+      martial_status: this.state.values.martial_status,
+      ctos: this.state.values.ctos,
+      size: this.state.values.size,
+      cost: this.state.values.cost,
+      downpayment: this.state.values.downpayment,
+    };
+
+    axios.post('http://localhost:4000/userform/submit', userObject);
   }
 
 
@@ -149,7 +169,7 @@ class About extends React.Component {
       </Row>
 
       <Row>
-        <form onSubmit={this.handleCalculate}>
+        <form>
           <Row xs={2} md={4} lg={10}>
             <label>
             <p className="fw-bold"> Estimated Monthly TNB Bill Savings (RM): </p>
@@ -171,25 +191,25 @@ class About extends React.Component {
           <Row xs={2} md={4} lg={10}>
             <label>
             <p className="fw-bold"> Customer Name: </p>
-              <input type="text" onChange={this.handleChange} name="ctos" value={this.state.values.ctos} />
+              <input type="text" onChange={this.handleChange} name="customername" />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
             <p className="fw-bold"> Contact Number: </p>
-              <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} />
+              <input type="text" onChange={this.handleChange} name="customernumber" />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
             <p className="fw-bold"> Address: </p>
-              <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} />
+              <input type="text" onChange={this.handleChange} name="customeraddress"  />
             </label>
           </Row>
           <br />
 
           <Row xs={2} md={4} lg={5}>
-            <Button variant="success" size="sm" onClick={this.handleCalculate}>Send To Okapi</Button>{' '}
+            <Button variant="success" size="sm" onClick={this.handleSubmit}>Send To Okapi</Button>{' '}
           </Row>
         </form>
       </Row>

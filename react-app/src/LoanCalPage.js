@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col'
 import './index.css';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,7 +25,8 @@ class About extends React.Component {
         downpayment: 0
       },
       ui: {
-        isInputFieldsValid: false
+        isInputFieldsValid: false,
+        isNumber: true
       }
     };
 
@@ -58,7 +58,6 @@ class About extends React.Component {
       } else if (value === '') {
         return false;
       }
-
       return true;
     });
 
@@ -69,7 +68,7 @@ class About extends React.Component {
     });
 
     if (!isInputFieldsValid) {
-      toast.warning('Please fill up the form');
+      toast.warning('Please fill up the form: ' + this.state.ui.isNumber);
     }
   }
 
@@ -80,8 +79,17 @@ class About extends React.Component {
         [event.target.name]: event.target.value
       }
     }));
-  }
 
+    if(event.target.id == 'income' && !isNaN(event.target.value)){
+      this.setState({
+        ui: {
+          isNumber: true,
+        }
+      });
+    }
+
+    
+  }
 
   handleDropDown(event) {
     this.setState(prevState => ({
@@ -92,23 +100,10 @@ class About extends React.Component {
     }));
   }
 
-
   handleCalculate(event) {
     event.preventDefault();
 
-    const userObject = {
-      income: this.state.values.income,
-      age: this.state.values.age,
-      martial_status: this.state.values.martial_status,
-      ctos: this.state.values.ctos,
-      size: this.state.values.size,
-      cost: this.state.values.cost,
-      downpayment: this.state.values.downpayment,
-    };
-
-    axios.post('http://localhost:4000/userform/submit', userObject);
   }
-
 
   handleClearAll(event) {
     event.preventDefault();
@@ -116,6 +111,9 @@ class About extends React.Component {
 
   render() {
     const isInputFieldsValid = this.state.ui.isInputFieldsValid;
+    // const isNumber = this.state.ui.isNumber; // set false as initial value
+
+
     return <Container>
       <Row>
         <Col>
@@ -129,7 +127,10 @@ class About extends React.Component {
           <Row xs={2} md={4} lg={10}>
             <label>
               <p className="fw-bold"> Borrower/Homeowner Income (RM): </p>
-              <input type="text" onChange={this.handleChange} name="income" value={this.state.values.income} />
+              <input id='income' 
+              // style={{color: isNumber ? '' : 'red'}} 
+              
+              type="text" onChange={this.handleChange} name="income" value={this.state.values.income} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
@@ -169,22 +170,24 @@ class About extends React.Component {
           <Row xs={2} md={4} lg={10}>
             <label>
               <p className="fw-bold">  System Size (kwp): </p>
-              <select name="size" value={this.state.values.size} onChange={this.handleDropDown}>
+              <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} />
+              {/* <select name="size" value={this.state.values.size} onChange={this.handleDropDown}>
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-              </select>
+              </select> */}
               {/* <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} /> */}
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
               <p className="fw-bold"> System Cost (RM): { } </p>
-              <select name="cost" value={this.state.values.cost} onChange={this.handleDropDown}>
+              <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} />
+              {/* <select name="cost" value={this.state.values.cost} onChange={this.handleDropDown}>
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-              </select>
+              </select> */}
               {/* <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} /> */}
             </label>
           </Row>
