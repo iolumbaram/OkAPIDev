@@ -3,7 +3,10 @@ let router = express.Router();
 const https = require('https');
 
 router.route('/submit').post((req, res, next) => {
+    if(req.body != null) res.send("success");
+
     let data = req.body;
+    console.log(data)
 
     let telegramapi = 'https://api.telegram.org/bot511882102:AAHccY18jnMQdhQfDV9jJOiqYCu8joQHpac/sendMessage?chat_id=183699849&parse_mode=HTML&text=';
     telegramapi += '<u>Income</u>:'+ ' <b>'+data.income+'</b>' +'%0A';
