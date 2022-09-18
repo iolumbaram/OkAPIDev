@@ -83,7 +83,7 @@ class About extends React.Component {
       </Row>
 
       <Row>
-        <form onSubmit={this.handleCalculate}>
+        <form>
           <Row xs={2} md={4} lg={10}>
             <label>
               Borrower/Homeowner Income (RM):
