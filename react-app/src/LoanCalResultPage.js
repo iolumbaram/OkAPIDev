@@ -152,43 +152,37 @@ class About extends React.Component {
         <form onSubmit={this.handleCalculate}>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Estimated Monthly TNB Bill Savings (RM):
-              <br />
+            <p className="fw-bold"> Estimated Monthly TNB Bill Savings (RM): </p>
               <input disabled={true} type="text" onChange={this.handleChange} name="estimated_monthly_tnb_bill_savings_rm" value={this.state.ui.estimated_monthly_tnb_bill_savings_rm} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Estimated Monthly Instalment (RM):
-              <br />
+            <p className="fw-bold"> Estimated Monthly Instalment (RM): </p>
               <input disabled={true} type="text" onChange={this.handleChange} name="estimated_monthly_instalment_rm" value={this.state.ui.estimated_monthly_instalment_rm} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Estimated Monthly Cash Flow Savings (RM):
-              <br />
+            <p className="fw-bold"> Estimated Monthly Cash Flow Savings (RM): </p>
               <input disabled={true} type="text" onChange={this.handleChange} name="estimated_monthly_cash_flow_savings_rm" value={this.state.ui.estimated_monthly_cash_flow_savings_rm} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Customer Name:
-              <br />
+            <p className="fw-bold"> Customer Name: </p>
               <input type="text" onChange={this.handleChange} name="ctos" value={this.state.values.ctos} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Contact Number:
-              <br />
+            <p className="fw-bold"> Contact Number: </p>
               <input type="text" onChange={this.handleChange} name="size" value={this.state.values.size} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Address:
-              <br />
+            <p className="fw-bold"> Address: </p>
               <input type="text" onChange={this.handleChange} name="cost" value={this.state.values.cost} />
             </label>
           </Row>

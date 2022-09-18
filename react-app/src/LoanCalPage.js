@@ -69,7 +69,7 @@ class About extends React.Component {
     });
 
     if (!isInputFieldsValid) {
-      toast('Please fill up the form');
+      toast.warning('Please fill up the form');
     }
   }
 
@@ -128,15 +128,13 @@ class About extends React.Component {
         <form>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower/Homeowner Income (RM):
-              <br />
+              <p className="fw-bold"> Borrower/Homeowner Income (RM): </p>
               <input type="text" onChange={this.handleChange} name="income" value={this.state.values.income} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower/Homeowner Age:
-              <br />
+              <p className="fw-bold"> Borrower/Homeowner Age: </p>
               <select name="age" value={this.state.values.age} onChange={this.handleDropDown}>
                 <option value="20"> {'<20'} </option>
                 <option value="30">21-30</option>
@@ -153,8 +151,7 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower Marital Status:
-              <br />
+              <p className="fw-bold"> Borrower Marital Status: </p>
               <select name="martial_status" value={this.state.values.martial_status} onChange={this.handleDropDown}>
                 <option value="single">Single</option>
                 <option value="married">Married</option>
@@ -165,14 +162,13 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Borrower CTOS Score(if known):
+              <p className="fw-bold"> Borrower CTOS Score(if known): </p>
               <input type="text" onChange={this.handleChange} name="ctos" value={this.state.values.ctos} />
             </label>
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              System Size (kwp):
-              <br />
+              <p className="fw-bold">  System Size (kwp): </p>
               <select name="size" value={this.state.values.size} onChange={this.handleDropDown}>
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -183,8 +179,7 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              System Cost (RM): { }
-              <br />
+              <p className="fw-bold"> System Cost (RM): { } </p>
               <select name="cost" value={this.state.values.cost} onChange={this.handleDropDown}>
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -195,8 +190,7 @@ class About extends React.Component {
           </Row>
           <Row xs={2} md={4} lg={10}>
             <label>
-              Downpayment (RM):
-              <br />
+              <p className="fw-bold">Downpayment (RM): </p>
               <input type="text" onChange={this.handleChange} name="downpayment" value={this.state.values.downpayment} />
             </label>
           </Row>
