@@ -94,8 +94,8 @@ class About extends React.Component {
     //calculate field B : Monthly Instalment (RM) ROUND(-PMT(C10/12,K4*12,J4),0) 
     //Payment = pv* apr/12*(1+apr/12)^(nper*12)/((1+apr/12)^(nper*12)-1)
     let financed_amount_pv = userSystemInputData['totalCost'] - userSystemInputData['upfrontPayment']; 
-    console.log('financed_amount_pv: ' + financed_amount_pv);
-    console.log(Math.pow(2, 3));
+    // console.log('financed_amount_pv: ' + financed_amount_pv);
+    // console.log(Math.pow(2, 3));
 
     let monthly_instalment_rm = Math.ceil(-1 * pmt( EIR_APR / 12, INSTALMENT_TENOR_YEARS * 12, financed_amount_pv));
     
