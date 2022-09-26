@@ -17,7 +17,7 @@ class About extends React.Component {
     this.state = {
       values: {
         income: '',
-        age: '<20',
+        age: '20 and below',
         martial_status: 'Single',
         ctos: '',
         size: 0,
@@ -137,15 +137,15 @@ class About extends React.Component {
             <label>
               <p className="fw-bold"> Borrower/Homeowner Age: </p>
               <select name="age" value={this.state.values.age} onChange={this.handleDropDown}>
-                <option value="20"> {'<20'} </option>
-                <option value="30">21-30</option>
-                <option value="40">31-40</option>
-                <option value="50">41-50</option>
-                <option value="60">51-60</option>
-                <option value="70">61-70</option>
-                <option value="80">71-80</option>
-                <option value="90">81-90</option>
-                <option value="100">91-100</option>
+                <option value="20"> {'20 and below'} </option>
+                <option value="30">21 to 30</option>
+                <option value="40">31 to 40</option>
+                <option value="50">41 to 50</option>
+                <option value="60">51 to 60</option>
+                <option value="70">61 to 70</option>
+                <option value="80">71 to 80</option>
+                <option value="90">81 to 90</option>
+                <option value="100">91 to 100</option>
               </select>
               {/* <input type="text" onChange={this.handleChange} name="age" value={this.state.values.age} /> */}
             </label>

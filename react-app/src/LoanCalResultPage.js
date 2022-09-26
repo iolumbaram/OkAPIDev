@@ -24,13 +24,16 @@ class About extends React.Component {
 
     this.state = {
       values: {
-        income: '',
-        age: '',
-        martial_status: '',
-        ctos: '',
+        income: props.location.info.data.income,
+        age: props.location.info.data.age,
+        martial_status: props.location.info.data.martial_status,
+        ctos: props.location.info.data.ctos,
         size: props.location.info.data.size,
         cost: props.location.info.data.cost,
-        downpayment: props.location.info.data.downpayment
+        downpayment: props.location.info.data.downpayment,
+        customername: '',
+        customernumber: '',
+        customeraddress: ''
       },
       ui :{
         estimated_monthly_tnb_bill_savings_rm: '',
@@ -148,6 +151,12 @@ class About extends React.Component {
       size: this.state.values.size,
       cost: this.state.values.cost,
       downpayment: this.state.values.downpayment,
+      estimated_monthly_tnb_bill_savings_rm: this.state.ui.estimated_monthly_tnb_bill_savings_rm,
+      estimated_monthly_instalment_rm: this.state.ui.estimated_monthly_instalment_rm,
+      estimated_monthly_cash_flow_savings_rm: this.state.ui.estimated_monthly_cash_flow_savings_rm,
+      customername: this.state.values.customername,
+      customernumber: this.state.values.customernumber,
+      customeraddress: this.state.values.customeraddress
     };
 
     axios.post('http://localhost:4000/userform/submit', userObject);
