@@ -21,15 +21,13 @@ router.route('/submit').post((req, res, next) => {
     telegramapi += '\u{2022} Ctos:'+ ' <b>'+JSON.stringify(data.ctos)+'</b>' +'%0A';
     telegramapi += '\u{2022} System Size:'+ ' <b>'+JSON.stringify(data.size)+'</b>' +'%0A';
     telegramapi += '\u{2022} System Cost:'+ ' <b>'+JSON.stringify(data.cost)+'</b>' +'%0A';
-    telegramapi += '\u{2022} Downpayment:'+ ' <b>'+JSON.stringify(data.downpayment.toFixed(2))+'</b>' +'%0A';
+    telegramapi += '\u{2022} Downpayment:'+ ' <b>'+JSON.stringify(data.downpayment)+'</b>' +'%0A';
     telegramapi += '%0A';
-    telegramapi += '\u{2022} Est Monthly TNB Bill Savings:'+ ' <b>'+JSON.stringify(data.estimated_monthly_tnb_bill_savings_rm.toFixed(2))+'</b>' +'%0A';
-    telegramapi += '\u{2022} Est Monthly Instalment:'+ ' <b>'+JSON.stringify(data.estimated_monthly_instalment_rm.toFixed(2))+'</b>' +'%0A';
-    telegramapi += '\u{2022} Est Cash Flow Saving:'+ ' <b>'+JSON.stringify(data.estimated_monthly_cash_flow_savings_rm.toFixed(2))+'</b>' +'%0A';
+    telegramapi += '\u{2022} Est Monthly TNB Bill Savings:'+ ' <b>'+JSON.stringify(data.estimated_monthly_tnb_bill_savings_rm)+'</b>' +'%0A';
+    telegramapi += '\u{2022} Est Monthly Instalment:'+ ' <b>'+JSON.stringify(data.estimated_monthly_instalment_rm)+'</b>' +'%0A';
+    telegramapi += '\u{2022} Est Cash Flow Saving:'+ ' <b>'+JSON.stringify(data.estimated_monthly_cash_flow_savings_rm)+'</b>' +'%0A';
     
-
-
-    console.log(telegramapi)
+    // console.log(telegramapi)
 
     https.get(telegramapi, res => {
         let data = [];

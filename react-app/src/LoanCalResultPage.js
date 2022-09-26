@@ -7,8 +7,10 @@ import './index.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-var pmt = require('formula-pmt');
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+var pmt = require('formula-pmt');
 
 const EIR_APR = 8 / 100; //percentage
 const INSTALMENT_TENOR_YEARS = 10; //number
@@ -17,6 +19,8 @@ const kwP_TO_MONTHLY_kwH_RATIO = 111.630036630037; //number
 
 const SST = 6; //percentage
 const KWTBB = 1.60; //percentage
+
+
 
 class About extends React.Component {
   constructor(props) {
@@ -213,7 +217,15 @@ class About extends React.Component {
       customeraddress: this.state.values.customeraddress
     };
 
-    axios.post('http://localhost:4000/userform/submit', userObject);
+    axios.post('http://localhost:4000/userform/submit', userObject).then((res) => {
+      console.log(res.data)
+      if (res.data === 'success') {
+        window.location.href = '/';
+      }
+
+    }).catch((error) => {
+      toast.warning('Message to Okapi Failed. Please try sending again: ' + error);
+    });;
   }
 
 
@@ -224,8 +236,8 @@ class About extends React.Component {
 
   render() {
     return <Container>
-
       <Row>
+        <ToastContainer />
         <Col>
           <h2 className="title">OKAPI</h2>
         </Col>
